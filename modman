@@ -1,0 +1,6 @@
+/app/code/core/Mage/Oscommerce/                             /app/code/core/Mage/Oscommerce/
+/app/design/adminhtml/default/default/template/oscommerce/  /app/design/adminhtml/default/default/template/oscommerce/
+/app/design/frontend/base/default/layout/oscommerce.xml     /app/design/frontend/base/default/layout/oscommerce.xml
+/app/design/frontend/base/default/template/oscommerce/      /app/design/frontend/base/default/template/oscommerce/
+/app/etc/modules/Mage_Oscommerce.xml                        /app/etc/modules/Mage_Oscommerce.xml
+/app/locale/en_US/Mage_Oscommerce.csv                       /app/locale/en_US/Mage_Oscommerce.csv

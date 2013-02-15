@@ -12,10 +12,16 @@
  * obtain it through the world-wide-web, please send an email
  * to license@magentocommerce.com so we can send you a copy immediately.
  *
- * @category   Mage
- * @package    Mage_Oscommerce
- * @copyright  Copyright (c) 2004-2007 Irubin Consulting Inc. DBA Varien (http://www.varien.com)
- * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    Mage
+ * @package     Mage_Oscommerce
+ * @copyright   Copyright (c) 2010 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 
 /**
@@ -47,13 +53,14 @@ class Mage_Oscommerce_Block_Adminhtml_Order_Grid extends Mage_Adminhtml_Block_Wi
             'header'    =>Mage::helper('oscommerce')->__('Order #'),
             'width'     =>'50px',
             'index'     =>'osc_magento_id',
-        ));
+            'type'      => 'number',
+            ));
 
         $this->addColumn('billing_name', array(
             'header'    =>Mage::helper('oscommerce')->__('Billing to Name'),
             'index'     =>'billing_name',
         ));
-        
+
         $this->addColumn('delivery_name', array(
             'header'    =>Mage::helper('oscommerce')->__('Ship to Name'),
             'index'     =>'delivery_name',
@@ -63,29 +70,29 @@ class Mage_Oscommerce_Block_Adminhtml_Order_Grid extends Mage_Adminhtml_Block_Wi
             'header' =>Mage::helper('oscommerce')->__('Currency'),
             'width' =>'50px',
             'index' =>'currency',
-        ));     
-        
+        ));
+
         $this->addColumn('orders_total', array(
             'header' =>Mage::helper('oscommerce')->__('Order Total'),
             'width' =>'50px',
             'index' =>'orders_total',
             'type' => 'currency',
             'currency'=>'order_currency_code'
-        ));             
+        ));
 
         $this->addColumn('orders_status', array(
             'header' =>Mage::helper('oscommerce')->__('Order Status'),
             'width' =>'50px',
             'index' =>'orders_status',
-        ));  
-                
+        ));
+
         $this->addColumn('date_purchased', array(
             'header'    => Mage::helper('oscommerce')->__('Purchased Year'),
             'width' 	=> '150px',
             'index'     => 'date_purchased',
             'type'		=> 'datetime',
         ));
-                
+
 //        $this->addColumn('purchased_year', array(
 //            'header'    =>Mage::helper('oscommerce')->__('Purchased Year'),
 //            'width' =>'50px',
@@ -93,13 +100,13 @@ class Mage_Oscommerce_Block_Adminhtml_Order_Grid extends Mage_Adminhtml_Block_Wi
 //            'type'	=> 'currency',
 //            'currency' => 'store_currency_code',
 //        ));
-//                
+//
 //        $this->addColumn('purchased_month', array(
 //            'header'    =>Mage::helper('oscommerce')->__('Purchased Month'),
 //            'width' =>'50px',
 //            'index'     =>'purchased_month',
 //            'type'	=> 'currency',
-//            'currency' => 'store_currency_code',            
+//            'currency' => 'store_currency_code',
 //        ));
 //
 //        $this->addColumn('purchased_day', array(
@@ -107,9 +114,9 @@ class Mage_Oscommerce_Block_Adminhtml_Order_Grid extends Mage_Adminhtml_Block_Wi
 //            'width' =>'50px',
 //            'index'     =>'purchased_day',
 //            'type'	=> 'currency',
-//            'currency' => 'store_currency_code',            
+//            'currency' => 'store_currency_code',
 //        ));
-        
+
         return parent::_prepareColumns();
     }
 

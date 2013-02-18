@@ -41,7 +41,7 @@ $currency   = $_order->getCurrencySymbol()?$_order->getCurrencySymbol():$_order-
     <!--Order Information-->
     <div class="entry-edit">
         <div class="entry-edit-head">
-            <?php echo Mage::helper('oscommerce')->__('Order # %s', $_order->getOrdersId()) ?>
+            <h4 class="icon-head head-account"><?php echo Mage::helper('oscommerce')->__('Order # %s', $_order->getOrdersId()) ?></h4>
         </div>
         <fieldset>
             <table cellspacing="0" class="form-list">

@@ -4,11 +4,13 @@ We made it Magento 1.7 compatible and have successfully migrated one osCommerce 
 
 If you're interested to contribute, feel free to do so ;-)
 
-INSTALLATION
+Installation
+============
 
 Just copy the app folder to your Magento installation.
 
-CONFIGURATION AND USAGE
+Configuration and Usage
+=======================
 
 In your Magento backend go to System > Import/Export > osCommerce and add a new osCommerce profile and run it. 
 

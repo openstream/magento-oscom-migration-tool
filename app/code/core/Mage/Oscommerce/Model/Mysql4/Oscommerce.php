@@ -760,10 +760,7 @@ class Mage_Oscommerce_Model_Mysql4_Oscommerce extends Mage_Core_Model_Mysql4_Abs
 
     public function createOrderTables()
     {
-        $importModel = $this->getImportModel();
-        $importId  = $importModel->getId();
-        $websiteId = $this->getWebsiteModel()->getId();
-
+        /* TODO: Replace with generic Magento table creation procedure - $conn->newTable(...)->addColumn(...) */
         $tables = array(
             'orders' => "CREATE TABLE `{$this->getTable('oscommerce_order')}` (
                   `osc_magento_id` int(11) NOT NULL auto_increment,
@@ -861,14 +858,10 @@ class Mage_Oscommerce_Model_Mysql4_Oscommerce extends Mage_Core_Model_Mysql4_Abs
             );
 
         $conn = $this->_setupConnection;
-        foreach ($tables as $table => $schema) {
-            $conn->beginTransaction();
+        foreach ($tables as $schema) {
             try {
                 $conn->query($schema);
-                $conn->commit();
-            } catch (Exception $e) {
-//                $conn->rollBack();
-            }
+            } catch (Exception $e) { }
         }
 
         $this->checkOrderField();

@@ -1319,7 +1319,7 @@ class Mage_Oscommerce_Model_Mysql4_Oscommerce extends Mage_Core_Model_Mysql4_Abs
         $select .= " ,`c`.`customers_password` `password_hash`, `c`.`customers_newsletter` `is_subscribed` ";
         $select .= " ,`ci`.`customers_info_date_account_created` `created_at` ";
         $select .= " ,`c`.`customers_default_address_id` `default_billing` FROM `{$this->getOscTable('customers')}` c";
-        $select .= " LEFT JOIN `customers_info` ci ON `ci`.`customers_info_id`=`c`.`customers_id` ";
+        $select .= " LEFT JOIN `{$this->getOscTable('customers_info')}` ci ON `ci`.`customers_info_id`=`c`.`customers_id` ";
         if ($limit && isset($limit['from']) && isset($limit['max'])) {
             $select .= " LIMIT {$limit['from']}, {$limit['max']}";
         }

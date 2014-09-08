@@ -245,6 +245,10 @@ class Mage_Oscommerce_Adminhtml_Oscommerce_ImportController extends Mage_Adminht
         /** @var $importModel Mage_Oscommerce_Model_Oscommerce */
         $totalRecords = array();
 
+        if ($tablePrefix = $importModel->getTablePrefix()) {
+            $importModel->getResource()->setTablePrefix($tablePrefix);
+        }
+
         // Start handling charsets
         $connCharset = $this->getRequest()->getParam('connection_charset');
         if ($connCharset) {
@@ -367,6 +371,11 @@ class Mage_Oscommerce_Adminhtml_Oscommerce_ImportController extends Mage_Adminht
         $error = false;
         if ($importModel->getId()) {
             try {
+
+                if ($tablePrefix = $importModel->getTablePrefix()) {
+                    $importModel->getResource()->setTablePrefix($tablePrefix);
+                }                
+                
                 $charset = $importModel->getResource()->getConnectionCharset();
                 $defaultOscCharset = Mage_Oscommerce_Model_Mysql4_Oscommerce::DEFAULT_OSC_CHARSET;
                 $defaultMageCharset = Mage_Oscommerce_Model_Mysql4_Oscommerce::DEFAULT_MAGENTO_CHARSET;

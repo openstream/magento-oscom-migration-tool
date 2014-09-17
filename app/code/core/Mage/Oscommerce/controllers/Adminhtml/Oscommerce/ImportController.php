@@ -284,17 +284,17 @@ class Mage_Oscommerce_Adminhtml_Oscommerce_ImportController extends Mage_Adminht
         $importModel->getResource()->setStoreLocales($storeLocales);
         // End setting Locale for stores
 
-        $websiteId = $this->getRequest()->getParam('website_id');
+        $websiteId = $this->getRequest()->getParam('website');
         $websiteCode = $this->getRequest()->getParam('website_code');
         $options = $this->getRequest()->getParam('import');
 
         // Checking Website, StoreGroup and RootCategory
-        if (!$websiteId) {
+        //if (!$websiteId) {
             $importModel->getResource()->setWebsiteCode($websiteCode);
-            $importModel->getResource()->createWebsite();
-        } else {
-            $importModel->getResource()->createWebsite($websiteId);
-        }
+        //    $importModel->getResource()->createWebsite();
+        //} else {
+        //    $importModel->getResource()->createWebsite($websiteId);
+        //}
         // End checking Website, StoreGroup and RootCategory
 
         $importModel->getResource()->importStores();

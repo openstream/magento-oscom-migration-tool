@@ -2038,17 +2038,17 @@ class Mage_Oscommerce_Model_Mysql4_Oscommerce extends Mage_Core_Model_Mysql4_Abs
             if (is_array($data)) {
                 foreach($data as $field => $value) {
                     if (!in_array($field, $notIncludedFields)) {
-                        $newValue = @iconv($charset, self::DEFAULT_FIELD_CHARSET, $value);
-                        if (strlen($newValue)) {
-                            $data[$field] = $newValue;
-                        }
+                        if (@iconv($charset, self::DEFAULT_FIELD_CHARSET, $value) !== FALSE)
+                            $data[$field] = @iconv($charset, self::DEFAULT_FIELD_CHARSET, $value);
+                        else
+                            $data[$field] = $value;
                     }
                 }
             } else {
-                $newValue = @iconv($charset, self::DEFAULT_MAGENTO_CHARSET, $data);
-                if (strlen($newValue)) {
-                    $data = $newValue;
-                }
+                if (@iconv($charset, self::DEFAULT_MAGENTO_CHARSET, $data) !== FALSE)
+                    $data = @iconv($charset, self::DEFAULT_MAGENTO_CHARSET, $data);
+                else
+                    $data = $data;
             }
         }
         return $data;

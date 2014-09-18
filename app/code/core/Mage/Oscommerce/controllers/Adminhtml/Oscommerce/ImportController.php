@@ -245,6 +245,10 @@ class Mage_Oscommerce_Adminhtml_Oscommerce_ImportController extends Mage_Adminht
         /** @var $importModel Mage_Oscommerce_Model_Oscommerce */
         $totalRecords = array();
 
+        if ($tablePrefix = $importModel->getTablePrefix()) {
+            $importModel->getResource()->setTablePrefix($tablePrefix);
+        }
+
         // Start handling charsets
         $connCharset = $this->getRequest()->getParam('connection_charset');
         if ($connCharset) {
@@ -280,17 +284,17 @@ class Mage_Oscommerce_Adminhtml_Oscommerce_ImportController extends Mage_Adminht
         $importModel->getResource()->setStoreLocales($storeLocales);
         // End setting Locale for stores
 
-        $websiteId = $this->getRequest()->getParam('website_id');
+        $websiteId = $this->getRequest()->getParam('website');
         $websiteCode = $this->getRequest()->getParam('website_code');
         $options = $this->getRequest()->getParam('import');
 
         // Checking Website, StoreGroup and RootCategory
-        if (!$websiteId) {
+        //if (!$websiteId) {
             $importModel->getResource()->setWebsiteCode($websiteCode);
-            $importModel->getResource()->createWebsite();
-        } else {
-            $importModel->getResource()->createWebsite($websiteId);
-        }
+        //    $importModel->getResource()->createWebsite();
+        //} else {
+        //    $importModel->getResource()->createWebsite($websiteId);
+        //}
         // End checking Website, StoreGroup and RootCategory
 
         $importModel->getResource()->importStores();
@@ -367,6 +371,11 @@ class Mage_Oscommerce_Adminhtml_Oscommerce_ImportController extends Mage_Adminht
         $error = false;
         if ($importModel->getId()) {
             try {
+
+                if ($tablePrefix = $importModel->getTablePrefix()) {
+                    $importModel->getResource()->setTablePrefix($tablePrefix);
+                }                
+                
                 $charset = $importModel->getResource()->getConnectionCharset();
                 $defaultOscCharset = Mage_Oscommerce_Model_Mysql4_Oscommerce::DEFAULT_OSC_CHARSET;
                 $defaultMageCharset = Mage_Oscommerce_Model_Mysql4_Oscommerce::DEFAULT_MAGENTO_CHARSET;

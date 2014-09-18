@@ -152,7 +152,7 @@
     <default>
         <oscommerce>
             <import>
-                <max_rows>10</max_rows>
+                <max_rows>500</max_rows>
             </import>
         </oscommerce>
     </default>

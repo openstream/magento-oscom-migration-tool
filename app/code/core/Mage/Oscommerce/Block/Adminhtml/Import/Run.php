@@ -144,7 +144,15 @@ function execImportData() {
             }
         });
     } else {
+        
+        // NOTICE: uncomment other lines to Increase more processes per request 
+        // WARNING: Will invalidate screen updates however! 
+        // But allow for faster processing (4 httpd threads instead of 1)
+
         sendImportData(importData.shift());
+        //sendImportData(importData.shift());
+        //sendImportData(importData.shift());
+        //sendImportData(importData.shift());
     }
 }
 
